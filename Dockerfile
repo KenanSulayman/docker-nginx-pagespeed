@@ -1,4 +1,4 @@
-FROM lagun4ik/docker-nginx-pagespeed
+FROM lagun4ik/nginx-pagespeed
 
 MAINTAINER ivan@lagunovsky.com
 
