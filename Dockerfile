@@ -1,10 +1,10 @@
-FROM alpine:3.4
+FROM alpine:3.5
 
 MAINTAINER ivan@lagunovsky.com
 
-ENV NGINX_VERSION=1.11.7 \
-     PAGESPEED_VERSION=1.11.33.4 \
-     LIBPNG_VERSION=1.2.56 \
+ENV NGINX_VERSION=1.11.8 \
+     PAGESPEED_VERSION=1.11.34.2 \
+     LIBPNG_VERSION=1.6.28 \
      MAKE_J=4 \
      PAGESPEED_ENABLE=on
 
@@ -45,7 +45,6 @@ RUN set -x && \
     make -j${MAKE_J} install V=0 && \
     # Build PageSpeed
     cd /tmp && \
-    curl -L https://dl.google.com/dl/linux/mod-pagespeed/tar/beta/mod-pagespeed-beta-${PAGESPEED_VERSION}-r0.tar.bz2 | tar -jx && \
     curl -L https://github.com/pagespeed/ngx_pagespeed/archive/v${PAGESPEED_VERSION}-beta.tar.gz | tar -zx && \
     cd /tmp/modpagespeed-${PAGESPEED_VERSION} && \
     curl -L https://raw.githubusercontent.com/lagun4ik/docker-nginx-pagespeed/master/patches/automatic_makefile.patch | patch -p1 && \
